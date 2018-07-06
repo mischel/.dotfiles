@@ -1,0 +1,31 @@
+[user]
+	name = mschaper
+	email = michael.schaper@uibk.ac.at
+[core]
+	editor = nvim
+[push]
+  default = matching
+[color]
+  ui = true
+[color "branch"]
+  current = green
+  local = yellow
+  remote = red
+[color "diff"]
+  meta = yellow bold
+  frag = magenta bold
+  old = red bold
+  new = green bold
+[color "status"]
+  added = yellow
+  changed = green
+  untracked = red
+[url "https://github.com/"]
+  insteadOf = gh:
+[alias]
+  aliases = !git config -l | grep alias | cut -c 7-
+  whois = !sh -c 'git log -i -1 --author=\"$1\" --pretty=\"format:%an <%ae>\"' -
+  history = !sh -c 'git log --pretty=format:\"%h %ad | %s%d [%an]\" --graph --date=short' -
+  branches = branch -a
+  release = !sh -c 'git tag v$1 && git push --tags' -
+  unrelease = !sh -c 'git tag -d v$1 && git push origin :v$1' -
