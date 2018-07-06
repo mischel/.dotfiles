@@ -15,6 +15,7 @@ alias dotfiles='git --git-dir=$HOME/.dotfiles --work-tree=$HOME'
 dotfiles config --local status.showUntrackedFiles no
 ```
 
+
 **Usage**
 
 ```bash
@@ -24,21 +25,18 @@ dotfiles commit -m <message>
 dotfiles push <repo>
 ```
 
-**Install**
 
+**Install**
 
 ```bash
 git clone --bare <repo> $HOME/.dotfiles
 alias dotfiles='git --git-dir=$HOME/.dotfiles --work-tree=$HOME'
-# here be dragons 
-# checkout fails if local files already exist
-#
+dotfiles config --local status.showUntrackedFiles no
+# here be dragons; checkout fails if local files already exist;
+# backup
 # cd $HOME
-# dotfiles ls-files | xargs -I {} cp --parents {} /tmp/
-# dotfiles ls-files | xargs -I {} rm
-dotfiles checkout
+# mkdir /tmp/.dotfiles-backup
+# dotfiles ls-files | xargs -I {} cp --parents {} /tmp/.dotfiles-backup
+dotfiles checkout -f
 ```
-
-
-
 
